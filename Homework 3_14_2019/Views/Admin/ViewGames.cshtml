@@ -1,0 +1,28 @@
+﻿@using GamesdbLibrary;
+@model IEnumerable<Game>
+
+<div class="container">
+	<table>
+		<tr>
+			<th>Date of game</th>
+			<th>Time</th>
+			<th>Players</th>
+			<th>Lchaim</th>
+		</tr>
+		@foreach(Game g in Model)
+		{
+		<tr>
+			<td>@g.datetime.ToLongDateString()</td>
+			<td>@g.datetime.ToLongTimeString()</td>
+			<td>@g.PLayerCnt/@g.MaxPlayers</td>
+			<td>
+				<form method="post" action="/admin/ViewGameDetails">
+					<input type="hidden" value="@g.Id" name="Id" />
+					<button class="btn btn-primary">View details</button>
+				</form>
+			</td>
+		</tr>
+		}
+	</table>
+</div>
+

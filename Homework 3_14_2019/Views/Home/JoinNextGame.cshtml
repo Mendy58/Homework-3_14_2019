@@ -1,0 +1,27 @@
+﻿@using GamesdbLibrary;
+@model Game
+
+<dic class="container">
+	@if (@Model == null)
+	{
+		<h4>Sorry, no games available. Please check back later. You can subcribe to recieve updates bt clicking <span><a class="btn btn-default" href="/Home/NotificationSignUp">here</a></span></h4>
+	}
+	else if (@Model.MaxPlayers <= Model.PLayerCnt)
+	{
+	  <h1>You're too late Canadian putz!</h1><p>You can subcribe to recieve updates bt clicking <span><a class="btn btn-default" href="/Home/NotificationSignUp">here</a></span></p>
+	}
+	else
+	{
+		 <div class="form-control">
+			 <label style="color:blue">Signup for game on @Model.datetime</label>
+			<form method="post" action="/Home/AddPlayer">
+				<input type="text" name="FirstName" placeholder="First Name" />
+				<input type="text" name="LastName" placeholder="Last Name" />
+				<input type="text" name="Email" placeholder="Email" />
+				<input type="hidden" name="Gameid" value="@Model.Id" />
+				<button class="btn btn-primary">Submit</button>
+			</form>
+		</div>
+	}
+</dic>
+

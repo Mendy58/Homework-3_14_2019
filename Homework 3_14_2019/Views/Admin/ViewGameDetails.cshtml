@@ -1,0 +1,21 @@
+﻿@using GamesdbLibrary;
+@model IEnumerable<Player>
+
+<div class="container">
+	<table>
+		<tr>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Email</th>
+		</tr>
+		@foreach (Player p in Model)
+		{
+			<tr>
+				<td>@p.FirstName</td>
+				<td>@p.LastName</td>
+				<td>@p.Email</td>
+			</tr>
+		}
+	</table>
+</div>
+
